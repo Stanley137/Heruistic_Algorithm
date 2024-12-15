@@ -153,15 +153,12 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_SPACE:
-                    bird.jump()
         # Clear the rem list at the start of each iteration
         rem = []
         
         for pipe in pipes:
             if pipe.collide(bird):
-                run = False
+                pass
             if pipe.x + pipe.PIPE_TOP.get_width() < 0:
                 rem.append(pipe) # remove the pipe over the screen
             if not pipe.passed and pipe.x < bird.x: 
@@ -177,7 +174,7 @@ def main():
         pipes = [pipe for pipe in pipes if pipe not in rem]
         
         if bird.y + bird.img.get_height() >= 680:    
-            run = False
+            pass
         bird.move() 
         base.move()
         draw_window(win, bird, pipes, base, score)
